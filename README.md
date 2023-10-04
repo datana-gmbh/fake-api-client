@@ -1,4 +1,4 @@
-# formulario-api
+# fake-api-client
 
 | Branch    | PHP                                         |
 |-----------|---------------------------------------------|
@@ -9,19 +9,21 @@
 ### Installation
 
 ```bash
-composer require datana-gmbh/formulario-api
+composer require datana-gmbh/fake-api-client
 ```
 
 ### Setup
 
 ```php
-use Datana\Formulario\Api\FormularioClient;
+use Datana\FakeApi\Api\FakeApiClient;
 
-$baseUri = 'https://api.formulario...';
-$token = '...';
+$baseUri = 'https://api.fake-api...';
+$username = '...';
+$password = '...';
+$disableCache = true; // optional
 $timeout = 10; // optional
 
-$client = new FormularioClient($baseUri, $token, $timeout);
+$client = new FakeApiClient($baseUri, $username, $password, $disableCache, $timeout);
 
 // you can now request any endpoint which needs authentication
 $client->request('GET', '/api/something', $options);
@@ -34,11 +36,11 @@ In your code you should type-hint to `Datana\Formulario\Api\DateneingabenApiInte
 ### Get by Aktenzeichen (`string`)
 
 ```php
-use Datana\Formulario\Api\DateneingabenApi;
-use Datana\Formulario\Api\FormularioClient;
+use Datana\FakeApi\Api\DateneingabenApi;
+use Datana\FakeApi\Api\FakeClient;
 use Datana\Formulario\Api\Domain\Value\DateneingabenId;
 
-$client = new FormularioClient(/* ... */);
+$client = new FakeClient(/* ... */);
 
 $api = new DateneingabenApi($client);
 $response = $api->byAktenzeichen('1abcde-1234-5678-Mustermann');
@@ -54,11 +56,11 @@ $dateneingabenId = DateneingabenId::fromInt($akte['id']);
 ### Get by ID (`Datana\Formulario\Api\Domain\Value\DateneingabenId`)
 
 ```php
-use Datana\Formulario\Api\DateneingabenApi;
-use Datana\Formulario\Api\FormularioClient;
+use Datana\FakeApi\Api\DateneingabenApi;
+use Datana\FakeApi\Api\FakeClient;
 use Datana\Formulario\Api\Domain\Value\DateneingabenId;
 
-$client = new FormularioClient(/* ... */);
+$client = new FakeClient(/* ... */);
 
 $api = new DateneingabenApi($client);
 
@@ -74,16 +76,16 @@ In your code you should type-hint to `Datana\Formulario\Api\StatisticsApiInterfa
 ### Get number of invitation mails sent for Mandantencockpit
 
 ```php
-use Datana\Formulario\Api\StatisticsApi;
-use Datana\Formulario\Api\FormularioClient;
+use Datana\FakeApi\Api\StatisticsApi;
+use Datana\FakeApi\Api\FakeClient;
 
-$client = new FormularioClient(/* ... */);
+$client = new FakeClient(/* ... */);
 
 $api = new StatisticsApi($client);
 
 $api->numberOfCockpitInvitationMailsSent(); // 42
 ```
 
-[build-status-master-php]: https://github.com/datana-gmbh/formulario-api/workflows/PHP/badge.svg?branch=master
+[build-status-master-php]: https://github.com/datana-gmbh/fake-api-client/workflows/PHP/badge.svg?branch=master
 
-[actions]: https://github.com/datana-gmbh/formulario-api/actions
+[actions]: https://github.com/datana-gmbh/fake-api-client/actions

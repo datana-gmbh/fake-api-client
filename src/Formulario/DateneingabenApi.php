@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * This file is part of datana-gmbh/formulario-api.
+ * This file is part of datana-gmbh/fake-api-client.
  *
  * (c) Datana GmbH <info@datana.rocks>
  *
@@ -11,8 +11,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Datana\Formulario\Api;
+namespace Datana\FakeApi\Api\Formulario;
 
+use Datana\FakeApi\Api\FakeApiClient;
+use Datana\Formulario\Api\DateneingabenApiInterface;
 use Datana\Formulario\Api\Domain\Value\Dateneingabe;
 use Datana\Formulario\Api\Domain\Value\DateneingabeId;
 use Datana\Formulario\Api\Domain\Value\DateneingabenCollection;
@@ -24,43 +26,28 @@ use Psr\Log\NullLogger;
 
 final class DateneingabenApi implements DateneingabenApiInterface
 {
-    private FormularioClient $client;
+    private FakeApiClient $client;
     private LoggerInterface $logger;
 
-    public function __construct(FormularioClient $client, ?LoggerInterface $logger = null)
+    public function __construct(FakeApiClient $client, ?LoggerInterface $logger = null)
     {
         $this->client = $client;
         $this->logger = $logger ?? new NullLogger();
     }
 
+
     public function byAktenzeichen(string $aktenzeichen): DateneingabenCollection
     {
-        $aktenzeichen = TrimmedNonEmptyString::fromString($aktenzeichen, '$aktenzeichen must not be an empty string');
-
         try {
             $response = $this->client->request(
                 'GET',
-                '/api/data-enquiries',
+                '/api/formulario/dateneingaben',
                 [
                     'query' => [
-                        'sort' => [
-                            [
-                                'property' => 'created_at',
-                                'order' => 'desc',
-                            ],
-                        ],
-                        'filter' => [
-                            [
-                                'property' => 'case_reference',
-                                'expression' => '=',
-                                'value' => $aktenzeichen->toString(),
-                            ],
-                            [
-                                'property' => 'state',
-                                'expression' => '!=',
-                                'value' => 'aborted',
-                            ],
-                        ],
+                        'aktenzeichen' => TrimmedNonEmptyString::fromString(
+                            $aktenzeichen,
+                            '$aktenzeichen must not be an empty string',
+                        )->toString(),
                     ],
                 ],
             );
@@ -80,21 +67,14 @@ final class DateneingabenApi implements DateneingabenApiInterface
         try {
             $response = $this->client->request(
                 'GET',
-                '/api/data-enquiries',
+                '/api/formulario/dateneingaben',
                 [
                     'query' => [
-                        'filter' => [
-                            [
-                                'property' => 'id',
-                                'expression' => '=',
-                                'value' => $id->toInt(),
-                            ],
-                        ],
+                        'id' => $id->toInt(),
                     ],
                 ],
             );
 
-            $this->logger->info('Got Dateneingaben from Formulario and persisted them in cache');
             $this->logger->debug('Response', $response->toArray());
 
             $collection = DateneingabenCollection::fromArray($response->toArray());

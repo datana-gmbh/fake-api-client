@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * This file is part of datana-gmbh/formulario-api.
+ * This file is part of datana-gmbh/fake-api-client.
  *
  * (c) Datana GmbH <info@datana.rocks>
  *
@@ -14,7 +14,7 @@ declare(strict_types=1);
 use Ergebnis\PhpCsFixer;
 
 $header = <<<'HEADER'
-This file is part of datana-gmbh/formulario-api.
+This file is part of datana-gmbh/fake-api-client.
 
 (c) Datana GmbH <info@datana.rocks>
 

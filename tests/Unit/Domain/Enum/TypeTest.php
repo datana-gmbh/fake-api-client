@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * This file is part of datana-gmbh/formulario-api.
+ * This file is part of datana-gmbh/fake-api-client.
  *
  * (c) Datana GmbH <info@datana.rocks>
  *
@@ -11,9 +11,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Datana\Formulario\Api\Tests\Unit\Domain\Enum;
+namespace Datana\FakeApi\Api\Tests\Unit\Domain\Enum;
 
-use Datana\Formulario\Api\Domain\Enum\Type;
+use Datana\FakeApi\Api\Domain\Enum\Type;
 use OskarStark\Enum\Test\EnumTestCase;
 
 final class TypeTest extends EnumTestCase

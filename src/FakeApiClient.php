@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * This file is part of datana-gmbh/formulario-api.
+ * This file is part of datana-gmbh/fake-api-client.
  *
  * (c) Datana GmbH <info@datana.rocks>
  *
@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Datana\Formulario\Api;
+namespace Datana\FakeApi\Api;
 
 use OskarStark\Value\TrimmedNonEmptyString;
 use Psr\Log\LoggerInterface;
@@ -21,21 +21,26 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Webmozart\Assert\Assert;
+use function Safe\sprintf;
 
 /**
  * @author Oskar Stark <oskarstark@googlemail.com>
  */
-final class FormularioClient
+final class FakeApiClient
 {
     private HttpClientInterface $client;
-    private string $token;
+    private string $username;
+    private string $password;
+    private bool $disableCache;
     private int $timeout;
     private LoggerInterface $logger;
 
-    public function __construct(string $baseUri, string $token, int $timeout = 5, ?LoggerInterface $logger = null)
+    public function __construct(string $baseUri, string $username, string $password, bool $disableCache = true, int $timeout = 5, ?LoggerInterface $logger = null)
     {
         $this->client = HttpClient::createForBaseUri($baseUri);
-        $this->token = TrimmedNonEmptyString::fromString($token, '$token must not be an empty string')->toString();
+        $this->username = TrimmedNonEmptyString::fromString($username, '$username must not be an empty string')->toString();
+        $this->password = TrimmedNonEmptyString::fromString($password, '$password must not be an empty string')->toString();
+        $this->disableCache = $disableCache;
         $this->timeout = $timeout;
         $this->logger = $logger ?? new NullLogger();
     }
@@ -69,8 +74,14 @@ final class FormularioClient
             array_merge(
                 $options,
                 [
-                    'auth_bearer' => $this->token,
-                    'max_duration' => 1000,
+                    'auth_basic' => sprintf(
+                        '%s:%s',
+                        $this->username,
+                        $this->password,
+                    ),
+                    'headers' => [
+                        'X-Disable-Cache' => $this->disableCache ? 'true' : 'false',
+                    ]
                 ],
             ),
         );

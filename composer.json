@@ -1,7 +1,7 @@
 {
-    "name": "datana-gmbh/formulario-api",
+    "name": "datana-gmbh/fake-api-client",
     "type": "library",
-    "description": "API for Formulario",
+    "description": "API for Fake-API",
     "license": "MIT",
     "authors": [
         {
@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": ">=8.2",
+        "datana-gmbh/formulario-api": "^1.2",
         "datana-gmbh/mandantencockpit-contracts": "^1.1",
         "fakerphp/faker": "^1.23",
         "oskarstark/trimmed-non-empty-string": "^1.0",
@@ -38,12 +39,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Datana\\Formulario\\Api\\": "src/"
+            "Datana\\FakeApi\\Api\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Datana\\Formulario\\Api\\Tests\\": "tests/"
+            "Datana\\FakeApi\\Api\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "stable",

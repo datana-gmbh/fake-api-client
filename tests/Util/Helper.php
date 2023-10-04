@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * This file is part of datana-gmbh/formulario-api.
+ * This file is part of datana-gmbh/fake-api-client.
  *
  * (c) Datana GmbH <info@datana.rocks>
  *
@@ -11,9 +11,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Datana\Formulario\Api\Tests\Util;
+namespace Datana\FakeApi\Api\Tests\Util;
 
-use Datana\Formulario\Api\Bridge\Faker\Provider\DateneingabeIdProvider;
+use Datana\FakeApi\Api\Bridge\Faker\Provider\DateneingabeIdProvider;
 use Faker\Factory;
 use Faker\Generator;
 

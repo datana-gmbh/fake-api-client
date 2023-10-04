@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * This file is part of datana-gmbh/formulario-api.
+ * This file is part of datana-gmbh/fake-api-client.
  *
  * (c) Datana GmbH <info@datana.rocks>
  *
@@ -11,11 +11,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Datana\Formulario\Api\Tests\Unit\Domain\Value;
+namespace Datana\FakeApi\Api\Tests\Unit\Domain\Value;
 
-use Datana\Formulario\Api\Domain\Value\Reminder;
-use Datana\Formulario\Api\Fixtures\Response\ReminderResponse;
-use Datana\Formulario\Api\Tests\Util\Helper;
+use Datana\FakeApi\Api\Domain\Value\Reminder;
+use Datana\FakeApi\Api\Fixtures\Response\ReminderResponse;
+use Datana\FakeApi\Api\Tests\Util\Helper;
 use Datana\Mandantencockpit\Contracts\Notification\Enum\Priority;
 use Datana\Mandantencockpit\Contracts\Notification\Enum\Target;
 use Datana\Mandantencockpit\Contracts\Notification\Value\TargetId;
