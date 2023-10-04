@@ -81,7 +81,7 @@ final class FakeApiClient
                     ),
                     'headers' => [
                         'X-Disable-Cache' => $this->disableCache ? 'true' : 'false',
-                    ]
+                    ],
                 ],
             ),
         );

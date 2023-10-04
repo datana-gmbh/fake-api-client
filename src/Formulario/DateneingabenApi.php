@@ -35,7 +35,6 @@ final class DateneingabenApi implements DateneingabenApiInterface
         $this->logger = $logger ?? new NullLogger();
     }
 
-
     public function byAktenzeichen(string $aktenzeichen): DateneingabenCollection
     {
         try {
