@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Datana\FakeApi\Api;
+namespace Datana\FakeApi;
 
 use OskarStark\Value\TrimmedNonEmptyString;
 use Psr\Log\LoggerInterface;

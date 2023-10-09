@@ -15,7 +15,7 @@ composer require datana-gmbh/fake-api-client
 ### Setup
 
 ```php
-use Datana\FakeApi\Api\FakeApiClient;
+use Datana\FakeApi\FakeApiClient;
 
 $baseUri = 'https://api.fake-api...';
 $username = '...';
@@ -36,8 +36,8 @@ In your code you should type-hint to `Datana\Formulario\Api\DateneingabenApiInte
 ### Get by Aktenzeichen (`string`)
 
 ```php
-use Datana\FakeApi\Api\DateneingabenApi;
-use Datana\FakeApi\Api\FakeClient;
+use Datana\FakeApi\DateneingabenApi;
+use Datana\FakeApi\FakeClient;
 use Datana\Formulario\Api\Domain\Value\DateneingabenId;
 
 $client = new FakeClient(/* ... */);
@@ -56,8 +56,8 @@ $dateneingabenId = DateneingabenId::fromInt($akte['id']);
 ### Get by ID (`Datana\Formulario\Api\Domain\Value\DateneingabenId`)
 
 ```php
-use Datana\FakeApi\Api\DateneingabenApi;
-use Datana\FakeApi\Api\FakeClient;
+use Datana\FakeApi\DateneingabenApi;
+use Datana\FakeApi\FakeClient;
 use Datana\Formulario\Api\Domain\Value\DateneingabenId;
 
 $client = new FakeClient(/* ... */);
@@ -76,8 +76,8 @@ In your code you should type-hint to `Datana\Formulario\Api\StatisticsApiInterfa
 ### Get number of invitation mails sent for Mandantencockpit
 
 ```php
-use Datana\FakeApi\Api\StatisticsApi;
-use Datana\FakeApi\Api\FakeClient;
+use Datana\FakeApi\StatisticsApi;
+use Datana\FakeApi\FakeClient;
 
 $client = new FakeClient(/* ... */);
 

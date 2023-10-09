@@ -11,9 +11,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Datana\FakeApi\Api\Formulario;
+namespace Datana\FakeApi\Formulario;
 
-use Datana\FakeApi\Api\FakeApiClient;
+use Datana\FakeApi\FakeApiClient;
 use Datana\Formulario\Api\DateneingabenApiInterface;
 use Datana\Formulario\Api\Domain\Value\Dateneingabe;
 use Datana\Formulario\Api\Domain\Value\DateneingabeId;
