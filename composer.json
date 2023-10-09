@@ -38,12 +38,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Datana\\FakeApi\\Api\\": "src/"
+            "Datana\\FakeApi\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Datana\\FakeApi\\Api\\Tests\\": "tests/"
+            "Datana\\FakeApi\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "stable"

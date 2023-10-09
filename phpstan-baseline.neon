@@ -1,7 +1,7 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Property Datana\\\\FakeApi\\\\Api\\\\FakeApiClient\\:\\:\\$logger is never read, only written\\.$#"
+			message: "#^Property Datana\\\\FakeApi\\\\FakeApiClient\\:\\:\\$logger is never read, only written\\.$#"
 			count: 1
 			path: src/FakeApiClient.php
 
